@@ -22,8 +22,8 @@ New Employe
                     <form action="{{route('employes.store')}}" method="POST" class="mt-3">
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="register_number">Registration Number</label>
-                        <input type="text" class="form-control" name="register_number" placeholder="Registration Number" value="{{old('register_number')}}">
+                        <label for="registration_number">Registration Number</label>
+                        <input type="text" class="form-control" name="registration_number" placeholder="Registration Number" value="{{old('registration_number')}}">
                     </div>
 
                     <div class="form-group mb-3">

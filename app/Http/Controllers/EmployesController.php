@@ -59,17 +59,35 @@ class EmployesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        //
+        $employe = Employee::where('registration_number', $id)->first();
+        return view('employes.edit')->with([
+            "employe" => $employe
+        ]);
     }
+        
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $employe = Employee::where('registration_number',$id)->first(); 
+        $this->validate($request,[
+            'registration_number' =>'required|numeric',
+            'fullname' =>'required',
+            'depart' =>'required',
+            'hire_date' =>'required',
+            'phone' =>'required',
+            'address' =>'required',
+            'city' =>'required',
+           
+        ]);  
+        $employe->update($request->except('_token','_method'));
+        return redirect()->route('employes.index')->with([
+            'success' => 'Employe Update Successfully'
+        ]);
     }
 
     /**

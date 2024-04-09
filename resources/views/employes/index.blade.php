@@ -80,5 +80,16 @@ List of employes
         });
     });
 </script>
+@if (@session()->has('success'))
+    <script>
+        Swal.fire({
+             position: "top-end",
+             icon: "success",
+             title: "{{session()->get('success')}}",
+             showConfirmButton: false,
+              timer: 2500 
+        });
+    </script>
+@endif
 
 @endsection
